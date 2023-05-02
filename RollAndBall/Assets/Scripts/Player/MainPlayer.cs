@@ -3,32 +3,24 @@ using UnityEngine;
 
 public class MainPlayer : MonoBehaviour
 {
-	[SerializeField]
-	private Transform _playerTransform;
-
-	private float _speedPlayer = 10f;
-	private float _dataSpeed;
-
-	private KeyCode[] _keyButton;
-	private Data _data;
-
-	private MovePlayer _movePlayer;
-
-	private void Start()
+	public void Move(Transform player, KeyCode forvard, KeyCode back,
+		KeyCode left, KeyCode right, float speedStep)
 	{
-		_keyButton = new KeyCode[] {KeyCode.W,
-		KeyCode.S, KeyCode.A, KeyCode.D };
-
-		_movePlayer = new MovePlayer();
-
-		_data.SetSpeed(_speedPlayer);
-		_dataSpeed = _data.GetSpeed();
-	}
-
-	private void FixedUpdate()
-	{
-		_movePlayer.Move(_playerTransform,
-			_keyButton[0], _keyButton[1],
-			_keyButton[2], _keyButton[3], _dataSpeed);
+		if (Input.GetKey(forvard))
+		{
+			player.Translate(Vector3.forward * speedStep * Time.deltaTime);
+		}
+		if (Input.GetKey(back))
+		{
+			player.Translate(Vector3.back * speedStep * Time.deltaTime);
+		}
+		if (Input.GetKey(left))
+		{
+			player.Translate(Vector3.left * speedStep * Time.deltaTime);
+		}
+		if (Input.GetKey(right))
+		{
+			player.Translate(Vector3.right * speedStep * Time.deltaTime);
+		}
 	}
 }

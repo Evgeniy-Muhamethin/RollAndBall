@@ -1,39 +1,30 @@
 using System;
 using UnityEngine;
 
-public class MovePlayer 
+public class MovePlayer : MainPlayer
 {
-    public MovePlayer()
-    {
+	[SerializeField]
+	private Transform _playerTransform;
 
-    }//Пустой конструктор 
+	private float _speedPlayer = 10f;
+	private float _dataSpeed;
 
-	#region Конструктор 
-	//public MovePlayer(Transform player, KeyCode forvard, KeyCode back,
-	//	KeyCode left, KeyCode right, float speedStep)
-	//{
-	//	Move(player, forvard, back, left, right, speedStep);
-	//}
-	#endregion
+	private KeyCode[] _keyButton;
+	private Data _data;
 
-	public void Move(Transform player, KeyCode forvard, KeyCode back,
-        KeyCode left, KeyCode right, float speedStep)
-    {
-        if (Input.GetKey(forvard))
-        {
-            player.Translate(Vector3.forward * speedStep * Time.deltaTime);
-        }
-		if (Input.GetKey(back))
-		{
-			player.Translate(Vector3.back * speedStep * Time.deltaTime);
-		}
-		if (Input.GetKey(left))
-		{
-			player.Translate(Vector3.left * speedStep * Time.deltaTime);
-		}
-		if (Input.GetKey(right))
-		{
-			player.Translate(Vector3.right * speedStep * Time.deltaTime);
-		}
+	private void Start()
+	{
+		_keyButton = new KeyCode[] {KeyCode.W,
+		KeyCode.S, KeyCode.A, KeyCode.D };
+
+		_data.SetSpeed(_speedPlayer);
+		_dataSpeed = _data.GetSpeed();
+	}
+
+	private void FixedUpdate()
+	{
+		Move(_playerTransform,
+			_keyButton[0], _keyButton[1],
+			_keyButton[2], _keyButton[3], _dataSpeed);
 	}
 }
