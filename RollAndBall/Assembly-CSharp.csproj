@@ -58,10 +58,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Player\MainPlayer.cs" />
-    <Compile Include="Assets\Scripts\Player\Data.cs" />
-    <Compile Include="Assets\Scripts\Items\InteractiveObject.cs" />
     <Compile Include="Assets\Scripts\Items\GoodBonus.cs" />
+    <Compile Include="Assets\Scripts\Player\MainPlayer.cs" />
+    <Compile Include="Assets\Scripts\Items\InteractiveObject.cs" />
+    <Compile Include="Assets\Scripts\Player\Data.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -1,9 +1,15 @@
-public class GoodBonus : InteractiveObject
+using UnityEngine;
+
+namespace Assets.Scripts.Items
 {
-	protected override void Interaction()
+	public class GoodBonus : InteractiveObject
 	{
-		base.Interaction();
-		//Можно добавить сюда логику для понуса
-		//Действие поднятого объекта 
+		protected override void Interaction()
+		{
+			base.Interaction();
+			//Можно добавить сюда логику для бонуса
+			//Действие поднятого объекта 
+		}
+	
 	}
 }

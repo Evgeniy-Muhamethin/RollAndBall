@@ -2192,6 +2192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2903195120675337272, guid: 5817ce7d4f05caf45a67cf2cae0a0dbe, type: 3}
+      propertyPath: _alternativeKeypad
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5817ce7d4f05caf45a67cf2cae0a0dbe, type: 3}
 --- !u!1001 &8443185243690450978

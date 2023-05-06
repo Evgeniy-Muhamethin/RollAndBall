@@ -1,30 +1,51 @@
 using System;
 using UnityEngine;
 
-public class MovePlayer : MainPlayer
+namespace Assets.Scripts.Player
 {
-	[SerializeField]
-	private Transform _playerTransform;
-
-	private float _speedPlayer = 10f;
-	private float _dataSpeed;
-
-	private KeyCode[] _keyButton;
-	private Data _data;
-
-	private void Start()
+	public class MovePlayer : MainPlayer
 	{
-		_keyButton = new KeyCode[] {KeyCode.W,
-		KeyCode.S, KeyCode.A, KeyCode.D };
+		[SerializeField]
+		private Transform _playerTransform;
+	
+		private float _speedPlayer = 10f;
+		private float _dataSpeed;
+	
+		private KeyCode[] _keyButtonFirst;
+		private KeyCode[] _keyButtonLast;
+		private Data _data;
 
-		_data.SetSpeed(_speedPlayer);
-		_dataSpeed = _data.GetSpeed();
-	}
+		[SerializeField]
+		private bool _alternativeKeypad;
+	
+		private void Start()
+		{
+			_keyButtonFirst = new KeyCode[] {KeyCode.W,
+			KeyCode.S, KeyCode.A, KeyCode.D };
 
-	private void FixedUpdate()
-	{
-		Move(_playerTransform,
-			_keyButton[0], _keyButton[1],
-			_keyButton[2], _keyButton[3], _dataSpeed);
+			_keyButtonLast = new KeyCode[] {KeyCode.UpArrow,
+			KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow };
+
+			_data.SetSpeed(_speedPlayer);
+			_dataSpeed = _data.GetSpeed();
+		}
+	
+		private void FixedUpdate()
+		{
+			switch (_alternativeKeypad)
+			{
+				case true:
+					Move(_playerTransform,
+						_keyButtonFirst[0], _keyButtonFirst[1],
+						_keyButtonFirst[2], _keyButtonFirst[3], _dataSpeed);
+					break;
+				case false:
+					Move(_playerTransform,
+						_keyButtonLast[0], _keyButtonLast[1],
+						_keyButtonLast[2], _keyButtonLast[3], _dataSpeed);
+					break;
+			}
+		}
+	
 	}
 }

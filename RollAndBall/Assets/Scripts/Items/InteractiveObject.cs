@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractiveObject : MonoBehaviour
+namespace Assets.Scripts.Items
 {
-    protected virtual void Interaction()
+	public class InteractiveObject : MonoBehaviour
     {
-        //Здесь находится базовая логикак объекта 
-        //Например: поднять объект
+        protected virtual void Interaction()
+        {
+            //Здесь находится базовая логикак объекта 
+            //Например: поднять объект
+        }
+    
     }
 }
