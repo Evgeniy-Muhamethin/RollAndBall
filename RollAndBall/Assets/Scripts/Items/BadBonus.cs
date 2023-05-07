@@ -3,22 +3,21 @@ using UnityEngine;
 
 namespace Assets.Scripts.Items
 {
-	public class GoodBonus : InteractiveObject, IFly1, IFlicker
+	public class BadBonus : InteractiveObject, IFly1, IRotation
 	{
-		private Material _material;
 		private float _lengthFly;
+		private float _speedRotation;
 
 		private void Awake()
 		{
-			_material = GetComponent<Renderer>().material;
 			_lengthFly = Random.Range(1.0f, 5.0f);
+			_speedRotation = Random.Range(10.0f, 50.0f);
 		}
 
 		protected override void Interaction()
 		{
 			base.Interaction();
-			//Можно добавить сюда логику для бонуса
-			//Действие поднятого объекта 
+			//Destroy GameObject
 		}
 
 		public void Fly()
@@ -26,12 +25,10 @@ namespace Assets.Scripts.Items
 			transform.localPosition = new Vector3(transform.localPosition.x,
 				Mathf.PingPong(Time.time, _lengthFly), transform.localPosition.z);
 		}
-	
-		public void Flicker()
-		{
-			_material.color = new Color(_material.color.r, _material.color.g,
-				_material.color.b, Mathf.PingPong(Time.time, 1.0f));
-		}
 
+		public void Rotation()
+		{
+			transform.Rotate(Vector3.up * (Time.deltaTime * _speedRotation), Space.World);
+		}
 	}
 }
