@@ -1,7 +1,13 @@
-﻿namespace Assets.Scripts.Items.Interface
+﻿using System.Diagnostics;
+using UnityEngine;
+
+namespace Assets.Scripts.Items.Interface
 {
 	internal interface IFly1
 	{
-		void Fly();
+		void Fly()
+		{
+            UnityEngine.Debug.Log("I can fly");
+		}
 	}
 }
